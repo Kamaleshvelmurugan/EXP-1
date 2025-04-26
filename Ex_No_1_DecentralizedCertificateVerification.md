@@ -2,31 +2,39 @@
 ## Aim:
   To develop a smart contract for issuing and verifying academic certificates on Ethereum, preventing forgery and ensuring authenticity.
 ## Algorithm:
-1. Deploy a smart contract where universities can issue certificates.
-2. Store a hash of certificate data on-chain.
-3. Provide a verification function that checks certificate authenticity.
-4. Users can verify the certificate by comparing the stored hash.
+### step 1:
+Deploy a smart contract where universities can issue certificates.
+### step 2:
+Store a hash of certificate data on-chain.
+### step 3:
+Provide a verification function that checks certificate authenticity.
+### step 4:
+Users can verify the certificate by comparing the stored hash.
 ## Program:
+#### Developed by: kamalesh v
+#### Register number: 212222240042
+
 ```
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
+
 contract CertificateVerification {
-address public university;
-mapping(bytes32 => bool) public certificates; // Store hashed certificates
-event CertificateIssued(bytes32 indexed certHash);
-constructor() {
-university = msg.sender; // University deploys the contract
-}
-function issueCertificate(string memory studentName, string memory degree, uint256 year) public {
-require(msg.sender == university, "Only university can issue certificates");
-bytes32 certHash = keccak256(abi.encodePacked(studentName, degree, year));
-certificates[certHash] = true;
-emit CertificateIssued(certHash);
-}
-function verifyCertificate(string memory studentName, string memory degree, uint256 year) public view returns (bool) {
-bytes32 certHash = keccak256(abi.encodePacked(studentName, degree, year));
-return certificates[certHash];
-}
+    address public university;
+    mapping(bytes32 => bool) public certificates; 
+    event CertificateIssued(bytes32 indexed certHash);
+    constructor() {
+        university = msg.sender;
+        }
+        function issueCertificate(string memory studentName, string memory degree, uint256 year) public {
+            require(msg.sender == university, "Only university can issue certificates");
+            bytes32 certHash = keccak256(abi.encodePacked(studentName, degree, year));
+            certificates[certHash] = true;
+            emit CertificateIssued(certHash);
+        }
+        function verifyCertificate(string memory studentName, string memory degree, uint256 year) public view returns (bool) {
+            bytes32 certHash = keccak256(abi.encodePacked(studentName, degree, year));
+            return certificates[certHash];
+        }
 }
 ```
 # Expected Output:
@@ -39,5 +47,10 @@ High-Level Overview:
 ● Enables quick verification by employers or other institutions.
 ● Shows how blockchain can be used in education and credential verification.
 ```
-# Result:
+# Output:
+![Full output](https://github.com/user-attachments/assets/88de6322-da2e-4f16-bf81-5aa9ea87bf50)
+![Output 2](https://github.com/user-attachments/assets/5273d415-970f-456c-84b6-d2d27573a454)
+![Output 3](https://github.com/user-attachments/assets/feab9bcb-2618-432e-aa27-74f97667c332)
 
+# Result:
+   Thus,to develop a smart contract for issuing and verifying academic certificates on Ethereum, preventing forgery and ensuring authenticity is successfully executed.
